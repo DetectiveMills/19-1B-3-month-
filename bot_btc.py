@@ -22,7 +22,7 @@ async def schedule():
     while monitoring:
         message = await get_btc_price()
         await bot.send_message(chat_id, message)
-        await asyncio.sleep(1)
+        # await asyncio.sleep(1)
 
 @dp.message(CommandStart())
 async def start(message:Message):
@@ -34,8 +34,8 @@ async def btc(message:Message):
     chat_id = message.chat.id
     monitoring = True
     await message.answer("Начало мониторинга")
-    await schedule()
-
+    # await schedule()
+    aioschedule.every(1).seconds.do(schedule)
 @dp.message(Command('stop'))
 async def stop(message:Message):
     global monitoring
@@ -49,7 +49,7 @@ async def on():
         BotCommand(command="/stop", description='Stop BTC monitoring'),
     ])
     logging.info("БОТ ЗАПУЩЕН")
-    aioschedule.every(1).seconds.do(schedule)
+    
     
 async def main():
     dp.startup.register(on)
