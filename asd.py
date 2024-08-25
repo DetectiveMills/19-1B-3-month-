@@ -2,15 +2,6 @@ import schedule
 import time
 import requests
 
-from aiogram import Bot, Dispatcher, types, F
-from aiogram.types import Message
-from aiogram.filters import Command
-from aiogram.fsm.context import FSMContext
-from aiogram.fsm.state import State, StatesGroup
-from aiogram.fsm.storage.memory import MemoryStorage
-import logging, asyncio, sqlite3, time
-from config import TOKEN
-
 def test():
     print("Hello Geeks")
     print(time.ctime())
